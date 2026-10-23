@@ -1,0 +1,10 @@
+{
+ "id": "sticker-dot",
+ "kind": "sticker",
+ "name": "Dot (placeholder)",
+ "data": {
+  "shape": "circle",
+  "color": "#118ab2",
+  "size": 1
+ }
+}

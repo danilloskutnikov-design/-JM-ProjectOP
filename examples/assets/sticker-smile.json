@@ -1,0 +1,10 @@
+{
+ "id": "sticker-smile",
+ "kind": "sticker",
+ "name": "Smile (placeholder)",
+ "data": {
+  "shape": "smile",
+  "color": "#ffd23f",
+  "size": 1
+ }
+}

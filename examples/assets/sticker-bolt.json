@@ -1,0 +1,10 @@
+{
+ "id": "sticker-bolt",
+ "kind": "sticker",
+ "name": "Bolt (placeholder)",
+ "data": {
+  "shape": "bolt",
+  "color": "#06d6a0",
+  "size": 1
+ }
+}

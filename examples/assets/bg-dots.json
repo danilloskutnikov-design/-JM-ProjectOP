@@ -1,0 +1,10 @@
+{
+ "id": "bg-dots",
+ "kind": "background",
+ "name": "Busy dots background",
+ "data": {
+  "top": "#4361ee",
+  "bottom": "#7209b7",
+  "dots": "#ffffff"
+ }
+}

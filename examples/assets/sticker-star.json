@@ -1,0 +1,10 @@
+{
+ "id": "sticker-star",
+ "kind": "sticker",
+ "name": "Star (placeholder)",
+ "data": {
+  "shape": "star",
+  "color": "#ffd166",
+  "size": 1
+ }
+}

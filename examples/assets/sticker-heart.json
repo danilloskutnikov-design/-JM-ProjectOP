@@ -1,0 +1,10 @@
+{
+ "id": "sticker-heart",
+ "kind": "sticker",
+ "name": "Heart (placeholder)",
+ "data": {
+  "shape": "heart",
+  "color": "#ef476f",
+  "size": 1
+ }
+}

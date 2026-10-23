@@ -1,0 +1,10 @@
+{
+ "id": "bg-calm",
+ "kind": "background",
+ "name": "Calm gradient background",
+ "data": {
+  "top": "#3a0ca3",
+  "bottom": "#4361ee",
+  "dots": null
+ }
+}

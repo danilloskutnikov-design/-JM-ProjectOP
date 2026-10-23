@@ -28,3 +28,7 @@ recordings/
 captures/
 assets/phone-case/
 assets/restricted/
+
+# App build output
+release/
+out/

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JM ProjectOP</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo">▶</span> JM ProjectOP</div>
+  <div class="projname"><input id="projName" value="Новый проект" spellcheck="false" aria-label="Название проекта"></div>
+  <div class="actions">
+    <button id="btnOpen" class="ghost">Открыть</button>
+    <button id="btnSave" class="ghost" disabled>Сохранить</button>
+    <button id="btnExport" class="primary" disabled>Экспорт MP4</button>
+  </div>
+</header>
+
+<div id="banner" class="banner warn" hidden></div>
+
+<main>
+  <aside class="side">
+    <section>
+      <h3>Сценарий</h3>
+      <textarea id="text" rows="4" spellcheck="false"></textarea>
+      <div id="planChips" class="chips"></div>
+      <ul id="planIssues" class="issues"></ul>
+    </section>
+
+    <section>
+      <h3>Формат</h3>
+      <div class="seg" id="presetSeg">
+        <label><input type="radio" name="preset" value="onboard" checked><span>Onboard<small>1124 × 1124</small></span></label>
+        <label><input type="radio" name="preset" value="paywall"><span>Paywall<small>1124 × 1000</small></span></label>
+      </div>
+      <label class="check"><input type="checkbox" id="quietOn"> Зона под крестик (px кадра)</label>
+      <div class="quad" id="quietBox">
+        <label>X<input type="number" id="qx" value="964"></label>
+        <label>Y<input type="number" id="qy" value="20"></label>
+        <label>Ш<input type="number" id="qw" value="140"></label>
+        <label>В<input type="number" id="qh" value="110"></label>
+      </div>
+    </section>
+
+    <section>
+      <h3>Сцена <small>(меняется без пересъёмки, если можно)</small></h3>
+      <label class="field">Фон<select id="selBg"></select></label>
+      <label class="field">Рисунок<select id="selDrawing"></select></label>
+      <label class="field">Наклейки
+        <span class="three"><select id="selSt0"></select><select id="selSt1"></select><select id="selSt2"></select></span>
+      </label>
+      <label class="field">Цвет чехла<input type="color" id="caseColor" value="#f4f1ea"></label>
+      <label class="field">Зацикливание
+        <select id="selLoop"><option value="cut">Кат (резкий стык)</option><option value="off">Выключено</option><option value="smooth" disabled>Плавное — скоро</option></select>
+      </label>
+    </section>
+
+    <section>
+      <h3>Бот</h3>
+      <label class="field">Манера игры<select id="selPersona"></select></label>
+      <div class="two">
+        <label class="field">Seed<input type="number" id="seed" value="1" min="0"></label>
+        <label class="field">Скорость<input type="number" id="speed" value="1" min="0.5" max="2" step="0.1"></label>
+      </div>
+    </section>
+
+    <button id="btnBuild" class="primary big">Собрать ролик</button>
+    <div id="assetsInfo" class="muted"></div>
+  </aside>
+
+  <section class="stage">
+    <div class="previewArea">
+      <div class="frameWrap">
+        <div id="frame" class="frame">
+          <img id="poster" alt="" hidden>
+          <video id="vid" muted playsinline controls hidden></video>
+          <div id="safe" class="guide safe" hidden></div>
+          <div id="quiet" class="guide quiet" hidden></div>
+          <div id="empty" class="empty">Настройте сценарий слева и нажмите<br><b>«Собрать ролик»</b></div>
+        </div>
+      </div>
+      <div class="toolbar">
+        <button id="btnPreview" class="ghost" disabled>Обновить предпросмотр</button>
+        <label class="check"><input type="checkbox" id="guides" checked> Направляющие</label>
+        <div id="prog" class="prog" hidden><i></i></div>
+        <span id="chips" class="chips"></span>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="tlHead"><h3>Монтаж</h3><span id="tlTotal" class="muted"></span></div>
+      <div id="tlBar" class="tlBar"></div>
+      <details id="reportBox"><summary>Отчёт сборки</summary><pre id="report"></pre></details>
+    </div>
+  </section>
+</main>
+<footer id="status">Готово к работе</footer>
+
+<dialog id="dlg"><form method="dialog" id="dlgForm"><h3 id="dlgTitle"></h3><div id="dlgBody"></div><menu id="dlgMenu"></menu></form></dialog>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+{
+  "name": "jm-projectop",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "JM ProjectOP — prototype 0.1: deterministic Phone Case autoplay → event-driven edit → MP4",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "test": "node --disable-warning=ExperimentalWarning --test \"test/**/*.test.ts\"",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "cli": "node --disable-warning=ExperimentalWarning packages/cli/main.ts",
+    "demo": "node --disable-warning=ExperimentalWarning packages/cli/main.ts demo",
+    "app": "node --disable-warning=ExperimentalWarning app/dev.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "npm run build && electron .",
+    "dist:win": "npm run build && electron-builder --win --x64",
+    "dist:mac": "npm run build && electron-builder --mac",
+    "test:ui": "node --disable-warning=ExperimentalWarning scripts/e2e-ui.ts",
+    "test:smoke": "npm run build && node scripts/smoke-dist.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0",
+    "@types/node": "^22.0.0",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "playwright": "^1.49.0"
+  },
+  "productName": "JM ProjectOP",
+  "author": "danilloskutnikov-design",
+  "main": "app/electron/main.mjs",
+  "dependencies": {
+    "ffmpeg-static": "^5.2.0"
+  },
+  "build": {
+    "appId": "design.justmoby.projectop",
+    "productName": "JM ProjectOP",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/packages/**",
+      "dist/app/**",
+      "app/ui/**",
+      "app/electron/**",
+      "examples/assets/**",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "node_modules/ffmpeg-static/**"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "category": "public.app-category.video"
+    }
+  }
+}

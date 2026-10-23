@@ -100,7 +100,7 @@ try {
   await page.click('#dlgMenu button.primary');
   await page.waitForFunction(() => /Готово:/.test(document.getElementById('expInfo')?.textContent || ''), null, { timeout: 120000 });
   const info = await page.textContent('#expInfo');
-  const file = (info!.match(/(\/[^\s]*\.mp4)/) ?? [])[1];
+  const file = (info!.match(/((?:[A-Za-z]:\\|\/)[^\s]*?\.mp4)/) ?? [])[1];
   ok(file && existsSync(file), 'MP4 создан: ' + file);
   const pr = spawnSync('ffprobe', ['-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=codec_name,width,height,r_frame_rate', '-of', 'csv=p=0', file!]).stdout.toString().trim();
   ok(pr === 'h264,562,562,30/1', 'ffprobe: ' + pr);
@@ -128,6 +128,7 @@ try {
 
   // open project dialog lists the saved one
   await page.click('#btnOpen');
+  await page.waitForFunction(() => (document.getElementById('dlgBody')!.textContent || '').includes('Тест UI'), null, { timeout: 10000 }).catch(() => {});
   ok((await page.textContent('#dlgBody'))?.includes('Тест UI'), 'в диалоге «Открыть» виден сохранённый проект');
   await page.click('#dlgBody button');
   await page.waitForFunction(() => (document.getElementById('projName') as HTMLInputElement).value === 'Тест UI');

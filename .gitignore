@@ -1,0 +1,30 @@
+# Secrets / local config
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.key
+*credentials*.json
+*secrets*.json
+
+# OS, IDE, runtime
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+node_modules/
+dist/
+build/
+coverage/
+.tmp/
+.cache/
+*.log
+
+# Generated output and sensitive licensed input (commit deliberately only if rights allow)
+exports/
+renders/
+recordings/
+captures/
+assets/phone-case/
+assets/restricted/
